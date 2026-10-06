@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Muhammad Najaahul Fikri Dahlan</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border-glow:hover {
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-gold-500 selection:text-slate-900">
+
+    <!-- Toast Notification Container -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 ease-out bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl border border-gold-500/40 flex items-center gap-3">
+        <i data-lucide="check-circle" class="w-5 h-5 text-gold-400"></i>
+        <span id="toast-message" class="text-sm font-medium">Pesan berhasil disalin!</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-slate-900/90 backdrop-blur-md text-white z-40 shadow-lg border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand Logo -->
+                <a href="#" class="text-xl font-extrabold tracking-wider text-gold-400 flex items-center gap-2">
+                    <span class="w-8 h-8 rounded-lg bg-gold-500/20 border border-gold-500/40 flex items-center justify-center text-gold-400 font-black text-sm">MN</span>
+                    <span>MNFD<span class="text-gold-500">.</span></span>
+                </a>
+
+                <!-- Desktop Links -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#about" class="hover:text-gold-400 transition-colors py-1">Tentang Saya</a>
+                    <a href="#experience" class="hover:text-gold-400 transition-colors py-1">Pengalaman</a>
+                    <a href="#skills" class="hover:text-gold-400 transition-colors py-1">Keterampilan</a>
+                    <a href="#certifications" class="hover:text-gold-400 transition-colors py-1">Sertifikasi</a>
+                    <a href="#contact" class="px-4 py-2 bg-gold-500 hover:bg-gold-600 text-slate-950 font-bold rounded-lg transition-all shadow-sm">Kontak</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 focus:outline-none" aria-label="Toggle Menu">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="block px-3 py-2 rounded-md text-slate-300 hover:text-gold-400 hover:bg-slate-800 text-base font-medium transition">Tentang Saya</a>
+            <a href="#experience" class="block px-3 py-2 rounded-md text-slate-300 hover:text-gold-400 hover:bg-slate-800 text-base font-medium transition">Pengalaman</a>
+            <a href="#skills" class="block px-3 py-2 rounded-md text-slate-300 hover:text-gold-400 hover:bg-slate-800 text-base font-medium transition">Keterampilan</a>
+            <a href="#certifications" class="block px-3 py-2 rounded-md text-slate-300 hover:text-gold-400 hover:bg-slate-800 text-base font-medium transition">Sertifikasi & Pelatihan</a>
+            <a href="#contact" class="block w-full text-center px-4 py-2.5 bg-gold-500 hover:bg-gold-600 text-slate-950 font-bold rounded-lg transition">Kontak Saya</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-900 text-white flex items-center justify-center pt-24 pb-16 px-4 relative overflow-hidden">
+        <!-- Decorative Ambient Light -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs sm:text-sm font-semibold rounded-full mb-6 backdrop-blur-sm">
+                <i data-lucide="shield-check" class="w-4 h-4 text-gold-400"></i>
+                <span>CHCO BNSP Certified HR Staff</span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                Muhammad Najaahul <br class="hidden sm:inline">
+                <span class="gold-gradient-text">Fikri Dahlan</span>
+            </h1>
+
+            <!-- Tagline -->
+            <p class="text-base sm:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+                Mendukung Pengelolaan SDM & Kepatuhan Hukum Perusahaan Secara Efektif, Tertib, dan Sesuai Regulasi Ketenagakerjaan.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#contact" class="w-full sm:w-auto px-7 py-3.5 bg-gold-500 hover:bg-gold-600 text-slate-950 font-bold rounded-xl transition-all duration-200 shadow-lg shadow-gold-500/20 flex items-center justify-center gap-2 group">
+                    <i data-lucide="mail" class="w-5 h-5 group-hover:scale-110 transition-transform"></i> 
+                    <span>Hubungi Saya</span>
+                </a>
+                <a href="#experience" class="w-full sm:w-auto px-7 py-3.5 border border-slate-700 hover:border-gold-400/80 bg-slate-900/50 hover:bg-slate-800 text-slate-200 hover:text-gold-400 font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-2">
+                    <span>Lihat Pengalaman</span>
+                    <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- Quick Metrics / Highlights -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-16 pt-8 border-t border-slate-800/80 text-left">
+                <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+                    <div class="text-2xl font-bold text-gold-400">3.74</div>
+                    <div class="text-xs text-slate-400 mt-0.5">IPK Cumlaude (S1 Hukum)</div>
+                </div>
+                <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+                    <div class="text-2xl font-bold text-gold-400">BNSP</div>
+                    <div class="text-xs text-slate-400 mt-0.5">CHCO HR Staff Sertifikasi</div>
+                </div>
+                <div class="col-span-2 md:col-span-1 p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+                    <div class="text-2xl font-bold text-gold-400">Legal & HR</div>
+                    <div class="text-xs text-slate-400 mt-0.5">Sinergi Kepatuhan & SDM</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-gold-600 font-bold text-xs uppercase tracking-wider">Profil Singkat</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-1">Tentang Saya</h2>
+                <div class="w-16 h-1 bg-gold-500 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
+                <!-- Highlight Box -->
+                <div class="md:col-span-4 bg-slate-900 text-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-xl relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-gold-500/10 rounded-full blur-xl pointer-events-none"></div>
+                    <div>
+                        <div class="w-12 h-12 bg-gold-500/20 border border-gold-500/30 rounded-xl flex items-center justify-center text-gold-400 mb-6">
+                            <i data-lucide="user-check" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Hukum & HR Staff</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Lulusan S1 Hukum Tata Negara UIN Malang dengan fokus sertifikasi profesional pada Human Resources Management.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-800 text-xs text-slate-400 space-y-2">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-gold-400"></i>
+                            <span>Ponorogo, Jawa Timur</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="graduation-cap" class="w-4 h-4 text-gold-400"></i>
+                            <span>UIN Maulana Malik Ibrahim</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="md:col-span-8 bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm flex flex-col justify-center">
+                    <p class="text-slate-700 leading-relaxed text-base mb-4">
+                        Saya merupakan Lulusan S1 Hukum Tata Negara dengan predikat <strong class="text-slate-900">Cumlaude (IPK 3.74)</strong> dari UIN Maulana Malik Ibrahim Malang serta memegang sertifikasi <strong class="text-slate-900">CHCO BNSP HR Staff</strong> dari HR Academy.
+                    </p>
+                    <p class="text-slate-700 leading-relaxed text-base mb-4">
+                        Memiliki pengalaman praktis dalam administrasi, pengelolaan data dan dokumen, riset regulasi, serta koordinasi lintas instansi. Memahami secara mendalam fondasi <em>HR Administration, HR Policy, Employment Law, Industrial Relations, Employee Relations, Employment Agreement</em>, hingga <em>Payroll Administration</em>.
+                    </p>
+                    <p class="text-slate-700 leading-relaxed text-base">
+                        Berbekal kombinasi latar belakang hukum dan kompetensi HR, saya siap berkontribusi dalam mendukung pengelolaan SDM yang tertib, adaptif, serta patuh terhadap aturan hukum ketenagakerjaan.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-gold-600 font-bold text-xs uppercase tracking-wider">Rekam Jejak</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-1">Pengalaman Kerja</h2>
+                <div class="w-16 h-1 bg-gold-500 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between gold-border-glow">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-bold text-gold-700 bg-gold-50 border border-gold-200/80 px-3 py-1 rounded-full">Feb 2025 - Sekarang</span>
+                            <i data-lucide="briefcase" class="w-5 h-5 text-slate-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Asisten Produksi</h3>
+                        <p class="text-sm font-semibold text-slate-500 mb-4 flex items-center gap-1.5 mt-1">
+                            <span>Batik Shibori</span>
+                            <span class="text-slate-300">•</span>
+                            <span>Ponorogo</span>
+                        </p>
+                        <ul class="text-slate-600 text-sm space-y-2.5 list-disc list-inside">
+                            <li>Membantu proses produksi batik shibori mulai dari pewarnaan kain hingga pengemasan produk.</li>
+                            <li>Melakukan pengecekan kualitas (Quality Control) dan pengawasan alur operasional.</li>
+                            <li>Melatih ketelitian, tanggung jawab, dan koordinasi tim kerja secara efektif.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between gold-border-glow">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-bold text-gold-700 bg-gold-50 border border-gold-200/80 px-3 py-1 rounded-full">Sep 2024 - Des 2024</span>
+                            <i data-lucide="calculator" class="w-5 h-5 text-slate-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Divisi Keuangan & Logistik</h3>
+                        <p class="text-sm font-semibold text-slate-500 mb-4 flex items-center gap-1.5 mt-1">
+                            <span>KPU Kota Malang</span>
+                            <span class="text-slate-300">•</span>
+                            <span>Kota Malang</span>
+                        </p>
+                        <ul class="text-slate-600 text-sm space-y-2.5 list-disc list-inside">
+                            <li>Menyusun laporan keuangan dan pengarsipan dokumen operasional Pemilu/Pilkada 2024.</li>
+                            <li>Mengelola data administrasi serta inventaris logistik secara terstruktur dan teratur.</li>
+                            <li>Mendukung kelancaran alokasi dan distribusi perlengkapan operasional.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between gold-border-glow">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-bold text-gold-700 bg-gold-50 border border-gold-200/80 px-3 py-1 rounded-full">Jun 2024 - Jul 2024</span>
+                            <i data-lucide="scale" class="w-5 h-5 text-slate-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Divisi Hukum Perdata</h3>
+                        <p class="text-sm font-semibold text-slate-500 mb-4 flex items-center gap-1.5 mt-1">
+                            <span>PN Situbondo</span>
+                            <span class="text-slate-300">•</span>
+                            <span>Situbondo</span>
+                        </p>
+                        <ul class="text-slate-600 text-sm space-y-2.5 list-disc list-inside">
+                            <li>Membantu administrasi persidangan perdata serta pengarsipan berkas perkara.</li>
+                            <li>Melakukan administrasi pemanggilan para pihak yang bersengketa secara tertib.</li>
+                            <li>Berperan aktif sebagai hakim dalam pelaksanaan peragaan sidang semu.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-gold-600 font-bold text-xs uppercase tracking-wider">Kompetensi</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-1">Keterampilan Utama</h2>
+                <div class="w-16 h-1 bg-gold-500 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <!-- Skill Category Filters -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8" id="skill-filters">
+                <button onclick="filterSkills('all')" class="skill-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-900 text-white shadow-sm" data-category="all">Semua</button>
+                <button onclick="filterSkills('hr')" class="skill-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 text-slate-700 hover:bg-slate-200" data-category="hr">Human Resources</button>
+                <button onclick="filterSkills('legal')" class="skill-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 text-slate-700 hover:bg-slate-200" data-category="legal">Hukum & Legal</button>
+                <button onclick="filterSkills('tech')" class="skill-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 text-slate-700 hover:bg-slate-200" data-category="tech">Tools & Otomasi</button>
+                <button onclick="filterSkills('soft')" class="skill-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 text-slate-700 hover:bg-slate-200" data-category="soft">Soft Skills</button>
+            </div>
+
+            <!-- Badges -->
+            <div class="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto" id="skills-container">
+                <span data-cat="hr" class="skill-item px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm font-semibold shadow-sm hover:border-gold-500 hover:bg-gold-50/50 transition-all flex items-center gap-2">
+                    <i data-lucide="users" class="w-4 h-4 text-gold-500"></i> HR Administration
+                </span>
+                <span data-cat="legal" class="skill-item px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm font-semibold shadow-sm hover:border-gold-500 hover:bg-gold-50/50 transition-all flex items-center gap-2">
+                    <i data-lucide="book-open" class="w-4 h-4 text-gold-500"></i> Employment Law
+                </span>
+                <span data-cat="hr" class="skill-item px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm font-semibold shadow-sm hover:border-gold-500 hover:bg-gold-50/50 transition-all flex items-center gap-2">
+                    <i data-lucide="handshake" class="w-4 h-4 text-gold-500"></i> Industrial Relations
+                </span>
+                <span data-cat="hr" class="skill-item px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm font-semibold shadow-sm hover:border-gold-500 hover:bg-gold-50/50 transition-all flex items-center gap-2">
+                    <i data-lucide="file-text" class="w-4 h-4 text-gold-500"></i> HR Policy & SOP
+                </span>
+                <span data-cat="legal" class="skill-item px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm font-semibold shadow-sm hover:border-gold-500 hover:bg-gold-50/50 transition-all flex items-center gap-2">
+                    <i data-lucide="file-check-2" class="w-4 h-4 text-gold-500"></i> Employment Agreement
+                </span>
+                <span data-cat="hr" class="skill-item px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm font-semibold shadow-sm hover:border-gold-500 hover:bg-gold-50/50 transition-all flex items-center gap-2">
+                    <i data-lucide="dollar-sign" class="w-4 h-4 text-gold-500"></i> Payroll Administration
+                </span>
+                <span data-cat="hr" class="skill-item px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm font-semibold shadow-sm hover:border-gold-500 hover:bg-gold-50/50 transition-all flex items-center gap-2">
+                    <i data-lucide="user-plus" class="w-4 h-4 text-gold-500"></i> Recruitment & Selection
+                </span>
+                <span data-cat="legal" class="skill-item px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm font-semibold shadow-sm hover:border-gold-500 hover:bg-gold-50/50 transition-all flex items-center gap-2">
+                    <i data-lucide="search" class="w-4 h-4 text-gold-500"></i> Legal Research
+                </span>
+                <span data-cat="tech" class="skill-item px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm font-semibold shadow-sm hover:border-gold-500 hover:bg-gold-50/50 transition-all flex items-center gap-2">
+                    <i data-lucide="file-spreadsheet" class="w-4 h-4 text-gold-500"></i> Microsoft Excel & Automation
+                </span>
+                <span data-cat="tech" class="skill-item px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm font-semibold shadow-sm hover:border-gold-500 hover:bg-gold-50/50 transition-all flex items-center gap-2">
+                    <i data-lucide="cloud" class="w-4 h-4 text-gold-500"></i> Google Workspace
+                </span>
+                <span data-cat="soft" class="skill-item px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm font-semibold shadow-sm hover:border-gold-500 hover:bg-gold-50/50 transition-all flex items-center gap-2">
+                    <i data-lucide="lightbulb" class="w-4 h-4 text-gold-500"></i> Problem Solving
+                </span>
+                <span data-cat="soft" class="skill-item px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm font-semibold shadow-sm hover:border-gold-500 hover:bg-gold-50/50 transition-all flex items-center gap-2">
+                    <i data-lucide="message-square" class="w-4 h-4 text-gold-500"></i> Communication & Negotiation
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications & Achievements -->
+    <section id="certifications" class="py-20 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Sertifikasi & Pelatihan -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-gold-500/20 border border-gold-500/30 flex items-center justify-center text-gold-600">
+                            <i data-lucide="award" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900">Sertifikasi & Pelatihan</h3>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                            <span class="inline-block px-2.5 py-0.5 text-xs font-bold text-gold-700 bg-gold-50 rounded mb-2">BNSP Certified</span>
+                            <h4 class="font-bold text-slate-900 text-lg">CHCO BNSP HR Staff</h4>
+                            <p class="text-xs text-slate-500 mt-1">HR Academy • Sertifikasi Profesi SDM</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                            <span class="inline-block px-2.5 py-0.5 text-xs font-bold text-slate-600 bg-slate-100 rounded mb-2">Pelatihan Kemnaker RI</span>
+                            <h4 class="font-bold text-slate-900 text-base">Bekerja Lebih Cepat dengan Excel & Automation</h4>
+                            <p class="text-xs text-slate-500 mt-1">Kementerian Ketenagakerjaan Republik Indonesia</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                            <span class="inline-block px-2.5 py-0.5 text-xs font-bold text-slate-600 bg-slate-100 rounded mb-2">Pelatihan Kemnaker RI</span>
+                            <h4 class="font-bold text-slate-900 text-base">Strategi Produktivitas dengan Google Workspace, AI & Automation</h4>
+                            <p class="text-xs text-slate-500 mt-1">Kementerian Ketenagakerjaan Republik Indonesia</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                            <span class="inline-block px-2.5 py-0.5 text-xs font-bold text-slate-600 bg-slate-100 rounded mb-2">Pelatihan Kemnaker RI</span>
+                            <h4 class="font-bold text-slate-900 text-base">Cerdas Mengelola Keuangan dan Legalitas Usaha</h4>
+                            <p class="text-xs text-slate-500 mt-1">Kementerian Ketenagakerjaan Republik Indonesia</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pencapaian & Keorganisasian -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-gold-500/20 border border-gold-500/30 flex items-center justify-center text-gold-600">
+                            <i data-lucide="trophy" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900">Pencapaian & Organisasi</h3>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-bold text-slate-900 text-base">Sertifikasi CHCO BNSP HR Staff</h4>
+                                <span class="text-xs font-bold text-gold-700 bg-gold-50 px-2.5 py-0.5 rounded">2026</span>
+                            </div>
+                            <p class="text-sm text-slate-600 mt-2">Dinyatakan Kompeten Pada Program Sertifikasi HR Staff berstandar BNSP nasional.</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-bold text-slate-900 text-base">Lulus Predikat Cumlaude (IPK 3.74)</h4>
+                                <span class="text-xs font-bold text-gold-700 bg-gold-50 px-2.5 py-0.5 rounded">2025</span>
+                            </div>
+                            <p class="text-sm text-slate-600 mt-2">Menyelesaikan Studi Sarjana Hukum (S1 Hukum Tata Negara) UIN Malang dengan prestasi akademik memuaskan.</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-bold text-slate-900 text-base">Ketua Ikatan Alumni MAN 2 Ponorogo</h4>
+                                <span class="text-xs font-bold text-gold-700 bg-gold-50 px-2.5 py-0.5 rounded">2023</span>
+                            </div>
+                            <p class="text-sm text-slate-600 mt-2">Memimpin organisasi alumni wilayah Malang, mempererat hubungan jejaring alumni, serta menjalankan program kerja terstruktur.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-slate-950 text-white relative">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-gold-400 font-bold text-xs uppercase tracking-wider">Komunikasi</span>
+                <h2 class="text-3xl font-bold mt-1">Mari Terhubung</h2>
+                <p class="text-slate-400 mt-3 max-w-xl mx-auto text-sm sm:text-base">
+                    Terbuka untuk kesempatan karir profesional di bidang Human Resources, Legal Compliance, maupun HR Administration.
+                </p>
+            </div>
+
+            <!-- Quick Copy Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+                <button onclick="copyToClipboard('alanfd666@gmail.com', 'Email')" class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-gold-500/50 transition-all text-left group">
+                    <div class="w-10 h-10 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400 mb-3 group-hover:scale-110 transition-transform">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </div>
+                    <div class="text-xs text-slate-400">Email Utama</div>
+                    <div class="text-sm font-semibold text-slate-200 mt-1 truncate">alanfd666@gmail.com</div>
+                    <div class="text-[10px] text-gold-400 mt-2 flex items-center gap-1 opacity-80 group-hover:opacity-100">
+                        <i data-lucide="copy" class="w-3 h-3"></i> Klik untuk salin
+                    </div>
+                </button>
+
+                <button onclick="copyToClipboard('0895329339362', 'Nomor HP/WA')" class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-gold-500/50 transition-all text-left group">
+                    <div class="w-10 h-10 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400 mb-3 group-hover:scale-110 transition-transform">
+                        <i data-lucide="phone" class="w-5 h-5"></i>
+                    </div>
+                    <div class="text-xs text-slate-400">WhatsApp / Telepon</div>
+                    <div class="text-sm font-semibold text-slate-200 mt-1">0895329339362</div>
+                    <div class="text-[10px] text-gold-400 mt-2 flex items-center gap-1 opacity-80 group-hover:opacity-100">
+                        <i data-lucide="copy" class="w-3 h-3"></i> Klik untuk salin
+                    </div>
+                </button>
+
+                <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 text-left">
+                    <div class="w-10 h-10 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400 mb-3">
+                        <i data-lucide="map-pin" class="w-5 h-5"></i>
+                    </div>
+                    <div class="text-xs text-slate-400">Lokasi Dominan</div>
+                    <div class="text-sm font-semibold text-slate-200 mt-1">Ponorogo, Jawa Timur</div>
+                    <div class="text-[10px] text-slate-500 mt-2">Indonesia</div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="bg-slate-900 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl max-w-2xl mx-auto">
+                <h3 class="text-lg font-bold text-white mb-4 text-center">Kirim Pesan Langsung</h3>
+                <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-400 mb-1">Nama Lengkap</label>
+                            <input type="text" required placeholder="Nama Anda" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold-500 transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-400 mb-1">Email / Kontak</label>
+                            <input type="text" required placeholder="email@perusahaan.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold-500 transition">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-400 mb-1">Pesan / Penawaran Kerja</label>
+                        <textarea rows="4" required placeholder="Tuliskan pesan Anda di sini..." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold-500 transition"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-gold-500 hover:bg-gold-600 text-slate-950 font-bold rounded-xl transition shadow-lg flex items-center justify-center gap-2">
+                        <i data-lucide="send" class="w-4 h-4"></i> Kirim Pesan
+                    </button>
+                </form>
+            </div>
+
+            <!-- Footer Copy -->
+            <div class="border-t border-slate-900 mt-16 pt-8 text-center text-xs text-slate-500">
+                &copy; 2026 Muhammad Najaahul Fikri Dahlan, S.H. All rights reserved.
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle Logic
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on clicking link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Copy To Clipboard Function
+        function copyToClipboard(text, label) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            showToast(`${label} (${text}) berhasil disalin!`);
+        }
+
+        // Toast Notification Handler
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = message;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Skill Filter Logic
+        function filterSkills(category) {
+            const items = document.querySelectorAll('.skill-item');
+            const buttons = document.querySelectorAll('.skill-btn');
+
+            buttons.forEach(btn => {
+                if(btn.getAttribute('data-category') === category) {
+                    btn.className = 'skill-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-900 text-white shadow-sm';
+                } else {
+                    btn.className = 'skill-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 text-slate-700 hover:bg-slate-200';
+                }
+            });
+
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-cat') === category) {
+                    item.style.display = 'inline-flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Handle Contact Form Submit
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            showToast('Terima kasih! Pesan Anda telah terkirim.');
+            document.getElementById('contact-form').reset();
+        }
+    </script>
+</body>
+</html>
